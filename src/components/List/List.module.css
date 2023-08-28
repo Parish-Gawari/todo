@@ -1,0 +1,9 @@
+#Edit:hover{
+    color: rgb(140, 205, 140);
+}
+#Edit:disabled{
+    border: none;
+}
+#delete:hover{
+    color: red
+}

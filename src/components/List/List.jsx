@@ -1,58 +1,42 @@
 /* eslint-disable no-unused-vars */
 import React from "react";
 import { Button } from "react-bootstrap";
+import styles from "./List.module.css"
 
-const List = () => {
+const List = ({tasks,isCheckHandler,isEditingHandler,cancelHandler,itemListChangeHandler,itemListDateChangeHandler,itemSaveHandler,deleteHandler}) => {
+  const listItems = tasks.map((task,index)=>(
+
+        <div key={index} className="border border-primary-subtle rounded p-2 w-sm-25">
+          {!task.isEditing && (
+            <>
+            <p>{task.item}</p>
+            <p>Due Date: {task.dueDate} </p>
+            </>
+          )}
+          {task.isEditing && (
+            <>
+            <div className="d-flex flex-column gap-1">
+            <textarea type="text" value={task.editingItem} className="p-1" onChange={(val)=>itemListChangeHandler(index,val.target.value)}/>
+            <input type="date" value={task.editDate} className="p-1" onChange={(val)=>itemListDateChangeHandler(index,val.target.value)}/>
+            </div>
+            <div className="d-flex justify-content-center mt-2 mb-1">
+            <Button variant="transparent" onClick={()=>itemSaveHandler(index)}>Save</Button>
+            <Button variant="transparent" onClick={()=>cancelHandler(index)}>Cancel</Button>
+            </div>
+            </>
+          )}
+          <div className="d-flex justify-content-evenly h-25 align-items-center">
+            <input type="checkbox" onClick={()=>isCheckHandler(index)} disabled={task.isDone === true}/>
+            <Button variant="transparent" className="border-none" onClick={() => isEditingHandler(index)} disabled={task.isDone === true} id={styles.Edit}>Edit</Button>
+            <Button variant="transparent" id={styles.delete} onClick={()=>deleteHandler(index)}>Delete</Button>
+          </div>
+        </div>
+       
+  ));
   return (
     <>
-      {/* <div
-        className="container d-flex  flex-column flex-sm-row  mt-2 border border-primary-subtle rounded align-items-center"
-        style={{ width: "92%" }}
-      >
-        <div
-          className="container d-flex justify-content-evenly align-items-center "
-          style={{ height: "4rem" }}
-        >
-          <span>
-            Hello Lorem ipsum dolor sit amet consectetur, adipisicing elit.
-          </span>
-          <span>Due Date: 12/12/24</span>
-          <input type="checkbox" />
-        </div>
-        <div
-          className="container d-flex justify-content-evenly align-items-center "
-          style={{ height: "4rem" }}
-        >
-          <Button
-            variant="transparent"
-            className="border border-info-subtle rounded"
-          >
-            Edit
-          </Button>
-          <Button
-            variant="transparent"
-            className="border border-danger-subtle rounded"
-          >
-            Delete
-          </Button>
-        </div>
-      </div> */}
-      <div className="container d-flex flex-column flex-md-row gap-2">
-        <div className="border border-primary-subtle rounded p-2">
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Neque sunt
-          autem nostrum atque enim alias eligendi totam odio voluptatem soluta
-          modi aperiam, velit veniam.
-        </div>
-        <div className="border border-primary-subtle rounded p-2">
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Neque sunt
-          autem nostrum atque enim alias eligendi totam odio voluptatem soluta
-          modi aperiam, velit veniam.
-        </div>
-        <div className="border border-primary-subtle rounded p-2">
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Neque sunt
-          autem nostrum atque enim alias eligendi totam odio voluptatem soluta
-          modi aperiam, velit veniam.
-        </div>
+      <div className="container-fluid d-flex flex-column flex-md-row gap-2 flex-wrap justify-content-center">
+        {listItems}    
       </div>
     </>
   );
