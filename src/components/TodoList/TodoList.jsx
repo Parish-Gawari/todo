@@ -44,11 +44,7 @@ const TodoList = () => {
     }
   };
 
-  const inputKeydownHandler = (e) => {
-    if (e.key === "Enter") {
-      btnClickHandler();
-    }
-  };
+  
 
   const isCheckHandler = (index)=>{
     const items = [...list];
@@ -109,7 +105,6 @@ const TodoList = () => {
         dateValue={date}
         inputChangeHandler={inputChangeHandler}
         btnClickHandler={btnClickHandler}
-        inputKeydownHandler={inputKeydownHandler}
         dateChangeHandler={dateChangeHandler}
         isDisabled={text.trim().length === 0 || date.length === 0}
         

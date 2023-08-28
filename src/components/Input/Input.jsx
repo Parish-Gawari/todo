@@ -7,7 +7,6 @@ import styles from "./Input.module.css"
 const Input = ({
   inputChangeHandler,
   btnClickHandler,
-  inputKeydownHandler,
   inputValue,
   dateValue,
   isDisabled,
@@ -24,7 +23,6 @@ const Input = ({
           placeholder="Enter Todo Here"
           className="m-2 p-2"
           onChange={changeHandler}
-          onKeyUp={inputKeydownHandler}
           value={inputValue}
         />
         <div className="d-flex justify-content-center">

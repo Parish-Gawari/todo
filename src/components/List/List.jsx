@@ -8,10 +8,20 @@ const List = ({tasks,isCheckHandler,isEditingHandler,cancelHandler,itemListChang
   const delayDate = (data)=>{
     const day1 = new Date(data)
     const day2 = new Date()
+
+    const d1 = data.split("-");
+    const d2 = [day2.getFullYear(),day2.getMonth(),day2.getDate()]
+    if(d1[0] == d2[0]){
+      if(d1[1] == d2[1]+1){
+        if(d1[2] == d2[2]){
+          return false
+        }
+      }
+    }
     return(day1.toISOString() < day2.toISOString())
     
   }
-  
+  console.log(delayDate("2023-08-28"))
   // style={delayDate(task.dueDate)}
   
  const listItems = tasks.map((task,index)=>(
