@@ -16,8 +16,8 @@ const List = ({tasks,isCheckHandler,isEditingHandler,cancelHandler,itemListChang
   
  const listItems = tasks.map((task,index)=>(
 
-        <div className="w-sm-25">
-        <div key={index} className= "rounded p-3 w-sm-25" style={(!task.isDone && delayDate(task.dueDate)) ? {border: "2px solid yellow"}: {border: "2px solid aqua"}} >
+        <div key={index}>
+        <div className= "rounded p-3 w-sm-25" style={(!task.isDone && delayDate(task.dueDate)) ? {border: "2px solid yellow"}: {border: "2px solid aqua"}} >
           {!task.isEditing && (
             <>
             <p style={task.isDone ? {textDecoration: "line-through"}: {}}>{task.item}</p>
@@ -53,7 +53,7 @@ const List = ({tasks,isCheckHandler,isEditingHandler,cancelHandler,itemListChang
   ));
   return (
     <>
-      <div className="container-fluid d-flex flex-column flex-md-row gap-2 flex-wrap justify-content-center">
+      <div className="container-fluid d-flex flex-column gap-2 flex-wrap justify-content-center">
         {listItems}    
       </div>
     </>
