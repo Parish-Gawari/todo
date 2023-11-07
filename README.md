@@ -13,3 +13,8 @@ Create a to-do list where you can keep you daily tasks and mask them as complete
 4. Each to-do item should be associated with a check-box. when the user clicks on the check box the content of the item should strikethrough (make sure you use index in the array for more efficient operation)
 
 Option to delete an item by clicking on the delete button attached with each item.
+
+
+========== Deployment Link ==========
+
+https://todov2byparish.netlify.app
